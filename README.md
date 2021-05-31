@@ -1,3 +1,3 @@
-# A simple Dockerfile for Elmer
+# Dockerfile & Makefile for building Elmer
 
-Builds Elmer master on top of Ubuntu without MP and MPI support.
+Run `make` to print instructions.
