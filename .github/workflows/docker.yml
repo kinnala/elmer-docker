@@ -1,0 +1,27 @@
+name: docker
+
+on: [workflow_dispatch]
+
+jobs:
+  login:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Clone Elmer
+        run: |
+          git clone --depth 1 https://github.com/ElmerCSC/elmerfem.git
+          echo "commit=`cd elmerfem && git rev-parse --short HEAD`" >> $GITHUB_ENV
+      - name: Build
+        run: |
+          docker build -t elmer .
+      - name: Login to GHCR
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Tag & Push
+        run: |
+          docker tag elmer ghcr.io/kinnala/elmer:devel-${{ env.commit }}
+          docker push ghcr.io/kinnala/elmer:devel-${{ env.commit }}
