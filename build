@@ -1,6 +1,0 @@
-#!/bin/bash
-mkdir -p /elmer/build
-cd /elmer/build
-cmake /elmer -DWITH_OpenMP:BOOLEAN=FALSE -DWITH_MPI:BOOLEAN=FALSE
-make
-make install

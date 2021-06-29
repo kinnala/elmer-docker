@@ -1,6 +1,9 @@
 name: docker
 
-on: [workflow_dispatch]
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '15 3 3 * *'
 
 jobs:
   login:

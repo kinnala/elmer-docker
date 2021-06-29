@@ -1,3 +1,3 @@
-# Dockerfile & Makefile for building Elmer
+# Monthly builds of ElmerCSC/elmerfem
 
-Run `make` to print instructions.
+E.g., `docker pull ghcr.io/kinnala/elmer:devel-0f7ae30`
